@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-label="할 일 앱">
+      <header class="app__header">
+        <h1 class="app__title">할 일</h1>
+        <p class="app__subtitle">추가 · 수정 · 삭제</p>
+      </header>
+
+      <section class="card" aria-label="할 일 입력">
+        <form id="todoForm" class="todo-form" autocomplete="off">
+          <label class="sr-only" for="todoInput">할 일 입력</label>
+          <input
+            id="todoInput"
+            class="todo-form__input"
+            type="text"
+            placeholder="할 일을 입력하세요 (Enter)"
+            maxlength="100"
+            required
+          />
+          <button class="todo-form__button" type="submit">추가</button>
+        </form>
+        <div class="toolbar">
+          <div class="toolbar__left" aria-label="요약">
+            <span id="countText" class="count">0개</span>
+          </div>
+          <div class="toolbar__right" aria-label="정리">
+            <button id="clearAllBtn" class="btn btn--ghost" type="button">
+              전체 삭제
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-label="할 일 목록">
+        <ul id="todoList" class="todo-list"></ul>
+        <p id="emptyState" class="empty">아직 할 일이 없어요. 하나 추가해볼까요?</p>
+      </section>
+
+      <footer class="app__footer">
+        <small>저장: Firebase Firestore</small>
+      </footer>
+    </main>
+
+    <template id="todoItemTemplate">
+      <li class="todo-item">
+        <div class="todo-item__main">
+          <input class="todo-item__checkbox" type="checkbox" aria-label="완료" />
+          <span class="todo-item__text"></span>
+        </div>
+        <div class="todo-item__actions">
+          <button class="btn btn--small btn--ghost todo-item__edit" type="button">
+            수정
+          </button>
+          <button class="btn btn--small btn--danger todo-item__delete" type="button">
+            삭제
+          </button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
